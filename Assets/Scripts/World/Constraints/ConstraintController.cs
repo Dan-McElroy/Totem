@@ -16,7 +16,7 @@ public class ConstraintController : MonoBehaviour {
 		currentConstraintsMap = new Dictionary<GameObject, bool> ();
 		if (level > 0) {
 			Debug.Log ("level: " + level);
-			for (var i=0; i < level; i++) {
+			for (var i=0; i < level-1; i++) {
 				currentConstraintsMap.Add (globalConstraints[i], false);
 			}
 		}
@@ -35,6 +35,7 @@ public class ConstraintController : MonoBehaviour {
 		if (currentConstraintsMap.ContainsKey (gameObject)) {
 			Debug.Log ("Success");
 			currentConstraintsMap [gameObject] = true;
+			//propagate for sound
 		}
 	}
 
@@ -42,16 +43,22 @@ public class ConstraintController : MonoBehaviour {
 		if (currentConstraintsMap.ContainsKey (gameObject)) {
 			Debug.Log ("Failure");
 			currentConstraintsMap [gameObject] = false;
+			//propagate for sound
 		}
+	}
+
+	void StartConstraintOpportunity() {
+		//propagate for sound
 	}
 
 	int NumberOfActiveConstraints() {
 		return currentConstraintsMap.Count;
 	}
 
-	void IncrementLevel() {
-		currentConstraintsMap.Add (globalConstraints[level], false);
-		level = level + 1;
+	void Restart() {
+		if (NumberOfFailedConstraints() == 0) {
+			IncrementLevel ();
+		}
 	}
 
 	int NumberOfFailedConstraints() {
@@ -62,5 +69,10 @@ public class ConstraintController : MonoBehaviour {
 			}
 		}
 		return failures;
+	}
+
+	private void IncrementLevel() {
+		level = level + 1;
+		currentConstraintsMap.Add (globalConstraints[level], false);
 	}
 }

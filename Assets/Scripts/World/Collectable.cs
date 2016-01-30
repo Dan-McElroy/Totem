@@ -18,6 +18,7 @@ namespace Scripts.World
             if (otherCollider.name == "Player")
             {
                 // Inform the game of points collected
+				this.SendMessageUpwards ("ConstraintSuccess", this.gameObject);
                 Destroy(gameObject);
             }
         }
