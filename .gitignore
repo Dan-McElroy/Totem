@@ -3,6 +3,7 @@ UnityGenerated/
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
+.vs/
 
 # Default imported assets - 160Mb
 [Aa]ssets/[Ii]mports/
@@ -15,6 +16,7 @@ UnityGenerated/
 /*.user
 /*.userprefs
 /*.pidb
+/*.pdb
 /*.booproj
 
 #Unity3D Generated File On Crash Reports

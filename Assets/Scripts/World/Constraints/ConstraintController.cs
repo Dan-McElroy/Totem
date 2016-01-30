@@ -51,7 +51,7 @@ public class ConstraintController : MonoBehaviour {
 		//propagate for sound
 	}
 
-	int NumberOfActiveConstraints() {
+	public int NumberOfActiveConstraints() {
 		return currentConstraintsMap.Count;
 	}
 
@@ -61,7 +61,7 @@ public class ConstraintController : MonoBehaviour {
 		}
 	}
 
-	int NumberOfFailedConstraints() {
+	public int NumberOfFailedConstraints() {
 		int failures = 0;
 		foreach (var value in currentConstraintsMap.Values) {
 			if (value == false) {
