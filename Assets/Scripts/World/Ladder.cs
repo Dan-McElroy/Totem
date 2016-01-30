@@ -3,6 +3,7 @@ using Scripts.Player;
 
 namespace Scripts.World
 {
+    [RequireComponent(typeof(Collider2D))]
     public class Ladder : MonoBehaviour
     {
 
