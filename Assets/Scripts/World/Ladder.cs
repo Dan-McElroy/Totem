@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using Scripts.Player;
 
-namespace Scripts
+namespace Scripts.World
 {
-    public class LadderZone : MonoBehaviour
+    [RequireComponent(typeof(Collider2D))]
+    public class Ladder : MonoBehaviour
     {
 
         private PlatformerCharacter2D Player;
@@ -18,7 +19,15 @@ namespace Scripts
         {
             if (otherCollider.name == "Player")
             {
-                Player.OnLadder = true;
+                Player.m_OnLadder = true;
+            }
+        }
+
+        void OnTriggerExit2D(Collider2D otherCollider)
+        {
+            if (otherCollider.name == "Player")
+            {
+                Player.m_OnLadder = false;
             }
         }
     }
