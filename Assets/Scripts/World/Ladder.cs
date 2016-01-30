@@ -3,7 +3,7 @@ using Scripts.Player;
 
 namespace Scripts.World
 {
-    public class LadderZone : MonoBehaviour
+    public class Ladder : MonoBehaviour
     {
 
         private PlatformerCharacter2D Player;
