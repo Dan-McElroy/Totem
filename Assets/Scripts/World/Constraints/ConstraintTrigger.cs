@@ -33,7 +33,6 @@ namespace Scripts.World.Constraints {
 
 		public void ActivityDetected() {
 			this.BroadcastMessage("SelfDestruct");
-			Debug.Log("Bazinga!");
 			this.SendMessageUpwards ("ConstraintSuccess", this.gameObject);
 		}
 	}
