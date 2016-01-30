@@ -13,11 +13,11 @@ namespace Scripts.World.Constraints {
 
 		// Use this for initialization
 		void Start () {
-			Debug.Log ("I started");
 //			Player = FindObjectOfType<PlatformerCharacter2D>();
 			circle = (GameObject) Instantiate(Resources.Load("WatchCircle"));
 			//make it a child of this object
 			circle.transform.parent = transform;
+			circle.transform.localPosition = new Vector3(0,0,0);
 			circle.transform.localScale = watchRadius;
 		}
 
@@ -33,7 +33,6 @@ namespace Scripts.World.Constraints {
 
 		public void ActivityDetected() {
 			this.BroadcastMessage("SelfDestruct");
-			Debug.Log("Bazinga!");
 			this.SendMessageUpwards ("ConstraintSuccess", this.gameObject);
 		}
 	}

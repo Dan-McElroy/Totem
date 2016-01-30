@@ -1,15 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
-//using System.Collections.Generic.Dictionary<GameObject, bool>;
+using System.Collections.Generic;
 
 public class ConstraintController : MonoBehaviour {
 
 	//string is the constraint type?
-	private System.Collections.Generic.Dictionary<GameObject, bool> constraintsMap;
+	private Dictionary<GameObject, bool> currentConstraintsMap;
+
+	[SerializeField] List<GameObject> globalConstraints;
+
+	[SerializeField] int level = 0;
 
 	// Use this for initialization
 	void Start () {
-		constraintsMap = new System.Collections.Generic.Dictionary<GameObject, bool> ();
+		currentConstraintsMap = new Dictionary<GameObject, bool> ();
+		if (level > 0) {
+			Debug.Log ("level: " + level);
+			for (var i=0; i < level; i++) {
+				currentConstraintsMap.Add (globalConstraints[i], false);
+			}
+		}
 	}
 
 	// Update is called once per frame
@@ -22,22 +32,31 @@ public class ConstraintController : MonoBehaviour {
 	}
 
 	void ConstraintSuccess(GameObject gameObject) {
-		Debug.Log ("Success");
-		constraintsMap[gameObject] = true;
+		if (currentConstraintsMap.ContainsKey (gameObject)) {
+			Debug.Log ("Success");
+			currentConstraintsMap [gameObject] = true;
+		}
 	}
 
 	void ConstraintFailure(GameObject gameObject) {
-		Debug.Log ("Failure");
-		constraintsMap[gameObject] = false;
+		if (currentConstraintsMap.ContainsKey (gameObject)) {
+			Debug.Log ("Failure");
+			currentConstraintsMap [gameObject] = false;
+		}
 	}
 
 	int NumberOfActiveConstraints() {
-		return constraintsMap.Count;
+		return currentConstraintsMap.Count;
+	}
+
+	void IncrementLevel() {
+		currentConstraintsMap.Add (globalConstraints[level], false);
+		level = level + 1;
 	}
 
 	int NumberOfFailedConstraints() {
 		int failures = 0;
-		foreach (var value in constraintsMap.Values) {
+		foreach (var value in currentConstraintsMap.Values) {
 			if (value == false) {
 				failures = failures + 1;
 			}
