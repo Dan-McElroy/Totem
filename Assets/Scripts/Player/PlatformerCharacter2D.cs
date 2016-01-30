@@ -1,5 +1,8 @@
-using System;
+using Scripts.World;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 namespace Scripts.Player
 {
@@ -20,7 +23,16 @@ namespace Scripts.Player
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 
-        public bool OnLadder = false;
+        #region Ladder-climbing variables
+        public bool m_OnLadder = false;
+        public float m_ClimbSpeed;
+        private float m_ClimbVelocity;
+        private float m_GravityStore;
+        #endregion
+
+        #region Interaction variables
+        public HashSet<Interactable> m_Interactables;
+        #endregion
 
         private void Awake()
         {
@@ -29,6 +41,8 @@ namespace Scripts.Player
             m_CeilingCheck = transform.Find("CeilingCheck");
             m_Anim = GetComponent<Animator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
+            m_GravityStore = m_Rigidbody2D.gravityScale;
+            m_Interactables = new HashSet<Interactable>();
         }
 
 
@@ -98,6 +112,30 @@ namespace Scripts.Player
                 m_Grounded = false;
                 m_Anim.SetBool("Ground", false);
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+            }
+
+            // Sets gravity scale if on ladder.
+            if (m_OnLadder)
+            {
+                m_Rigidbody2D.gravityScale = 0f;
+                m_ClimbVelocity = m_ClimbSpeed * CrossPlatformInputManager.GetAxis("Vertical");
+                m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_ClimbVelocity);
+            }
+            else
+            {
+                m_Rigidbody2D.gravityScale = m_GravityStore;
+            }
+        }
+
+        public void Interact()
+        {
+            // Interact with the objects the player is near.
+            if (!m_Interactables.Any())
+            {
+                foreach (var interactable in m_Interactables)
+                {
+                    interactable.Interact();
+                }
             }
         }
 

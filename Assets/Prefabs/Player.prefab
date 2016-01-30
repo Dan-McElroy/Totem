@@ -46,7 +46,7 @@ GameObject:
   - 114: {fileID: 11421068}
   - 114: {fileID: 11434816}
   m_Layer: 0
-  m_Name: CharacterRobotBoy
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.8093994, y: -0.45067716, z: 0}
+  m_LocalPosition: {x: -3.9275322, y: -1.5436575, z: 0}
   m_LocalScale: {x: 1.7715329, y: 1.7715304, z: 1}
   m_Children:
   - {fileID: 476046}
@@ -175,13 +175,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxSpeed: 10
-  m_JumpForce: 800
+  m_JumpForce: 600
   m_CrouchSpeed: 0.25
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 4294967295
-  OnLadder: 0
+  m_OnLadder: 0
+  m_ClimbSpeed: 5
 --- !u!212 &21237646
 SpriteRenderer:
   m_ObjectHideFlags: 1
