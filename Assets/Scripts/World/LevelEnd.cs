@@ -35,7 +35,7 @@ namespace Scripts.World
             m_PlayerTransform.position = 
                 new Vector3(m_PlayerStart.position.x, m_PlayerStart.position.y, m_PlayerStart.position.z);
             // Message the constraint manager to restart
-            gameObject.SendMessage("Restart", SendMessageOptions.DontRequireReceiver);
+            gameObject.SendMessageUpwards("Restart", SendMessageOptions.DontRequireReceiver);
         }
     }
 }

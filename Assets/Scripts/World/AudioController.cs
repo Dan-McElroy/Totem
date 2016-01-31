@@ -27,13 +27,15 @@ public class AudioController : MonoBehaviour {
         m_AudioSource.pitch = m_StartPitch + (m_ConstraintController.NumberOfActiveConstraints() * m_ActiveConstraintPitchDelta);
     }
 
-    void ConstraintSuccess(GameObject gameObject)
+    void ConstraintSuccessSound()
     {
+		Debug.Log ("Lowering volume");
         m_AudioSource.volume += m_SuccessVolumeDelta;
     }
 
-    void ConstraintFailure(GameObject gameObject)
+    void ConstraintFailureSound()
     {
+		Debug.Log ("Raising volume");
         m_AudioSource.volume += m_FailureVolumeDelta;
     }
 }

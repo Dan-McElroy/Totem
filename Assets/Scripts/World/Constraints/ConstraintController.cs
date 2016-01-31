@@ -35,7 +35,7 @@ public class ConstraintController : MonoBehaviour {
 		if (currentConstraintsMap.ContainsKey (gameObject)) {
 			Debug.Log ("Success");
 			currentConstraintsMap [gameObject] = true;
-			//propagate for sound
+			this.SendMessage ("ConstraintSuccessSound");
 		}
 	}
 
@@ -43,7 +43,7 @@ public class ConstraintController : MonoBehaviour {
 		if (currentConstraintsMap.ContainsKey (gameObject)) {
 			Debug.Log ("Failure");
 			currentConstraintsMap [gameObject] = false;
-			//propagate for sound
+			this.SendMessage ("ConstraintFailureSound");
 		}
 	}
 
@@ -56,6 +56,7 @@ public class ConstraintController : MonoBehaviour {
 	}
 
 	void Restart() {
+		Debug.Log ("level end in constraint controller");
 		if (NumberOfFailedConstraints() == 0) {
 			IncrementLevel ();
 		}
