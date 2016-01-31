@@ -85,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.41472, y: -2.5957947, z: 0}
+  m_LocalPosition: {x: -18.081284, y: -3.2317743, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 446156}
@@ -179,7 +179,7 @@ Animator:
   m_GameObject: {fileID: 150462}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4befa0477b616434e9979a2c6f9be49c, type: 2}
+  m_Controller: {fileID: 9100000, guid: f8179f5c51a07419a9104196e8eb7dec, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxSpeed: 10
-  m_JumpForce: 800
+  m_JumpForce: 1000
   m_CrouchSpeed: 0.25
   m_AirControl: 1
   m_WhatIsGround:

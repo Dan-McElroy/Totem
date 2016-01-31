@@ -85,12 +85,7 @@ namespace Scripts.Player
 
                 // Move the character
                 m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
-
-                if (m_Rigidbody2D.velocity.y <= 0 && gameObject.layer == 8)
-                {
-                    gameObject.layer = 0;
-                }
-
+                
                 // If the input is moving the player right and the player is facing left...
                 if (move > 0 && !m_FacingRight)
                 {
@@ -108,9 +103,6 @@ namespace Scripts.Player
 
             if (m_Grounded)
             {
-				if (gameObject.layer != 8) {
-					gameObject.layer = 8;       // Set to DoNotCollide
-				}
                 if (jump)
                 {
                     if (m_Anim.GetBool("Ground"))
