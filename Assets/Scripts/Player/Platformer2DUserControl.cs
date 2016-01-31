@@ -29,10 +29,9 @@ namespace Scripts.Player
         private void FixedUpdate()
         {
             // Read the inputs.
-            var crouch = Input.GetKey(KeyCode.LeftControl);
             var h = CrossPlatformInputManager.GetAxis("Horizontal");
             // Pass all parameters to the character control script.
-            m_Character.Move(h, crouch, m_Jump);
+            m_Character.Move(h, m_Jump);
 
             if (Input.GetKey(KeyCode.E))
             {
