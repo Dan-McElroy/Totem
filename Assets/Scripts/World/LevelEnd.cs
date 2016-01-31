@@ -1,5 +1,6 @@
 ﻿using Scripts.Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Scripts.World
 {
@@ -16,7 +17,7 @@ namespace Scripts.World
         {
             m_PlayerStart = GameObject.FindGameObjectWithTag("Respawn").transform;
             m_PlayerTransform = FindObjectOfType<PlatformerCharacter2D>().transform;
-            DoRestart();
+            RepositionPlayer();
         }
 
         void OnTriggerEnter2D(Collider2D collider)
@@ -29,11 +30,18 @@ namespace Scripts.World
             }
         }
 
+        void RepositionPlayer()
+        {
+            m_PlayerTransform.position =
+                new Vector3(m_PlayerStart.position.x, m_PlayerStart.position.y, m_PlayerStart.position.z);
+            m_PlayerTransform.GetComponent<PlatformerCharacter2D>().m_HasStartedWalking = false;
+        }
+
         void DoRestart()
         {
+            SceneManager.LoadScene(0);
+            RepositionPlayer();
             // Move the player back to the player start
-            m_PlayerTransform.position = 
-                new Vector3(m_PlayerStart.position.x, m_PlayerStart.position.y, m_PlayerStart.position.z);
             // Message the constraint manager to restart
             gameObject.SendMessage("Restart", SendMessageOptions.DontRequireReceiver);
         }
