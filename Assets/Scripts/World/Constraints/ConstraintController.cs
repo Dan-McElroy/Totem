@@ -27,11 +27,12 @@ public class ConstraintController : MonoBehaviour {
         }
 
 		currentConstraintsMap = new Dictionary<GameObject, bool> ();
-		if (level > 0) {
-			Debug.Log ("level: " + level);
-			for (var i=0; i < level-1; i++) {
+		Debug.Log ("level: " + level);
+		for (var i=0; i < globalConstraints.Count; i++) {
+			if (level > i) {
 				currentConstraintsMap.Add (globalConstraints[i], false);
 			}
+			BroadcastMessage ("Hide", i);
 		}
 	}
 
@@ -80,9 +81,10 @@ public class ConstraintController : MonoBehaviour {
 
 	public int NumberOfFailedConstraints() {
 		int failures = 0;
-		foreach (var value in currentConstraintsMap.Values) {
-			if (value == false) {
+		foreach (var key in currentConstraintsMap.Keys) {
+			if (currentConstraintsMap[key] == false) {
 				failures = failures + 1;
+				BroadcastMessage ("Fail", globalConstraints.IndexOf(key));
 			}
 		}
 		return failures;
@@ -93,6 +95,7 @@ public class ConstraintController : MonoBehaviour {
 		currentConstraintsMap = new Dictionary<GameObject, bool> ();
 		for (var i=0; i < level; i++) {
 			currentConstraintsMap.Add (globalConstraints[i], false);
+			BroadcastMessage ("Reveal", i);
 		}
 	}
 }

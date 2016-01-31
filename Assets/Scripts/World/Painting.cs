@@ -13,15 +13,26 @@ namespace Scripts.World
         private SpriteRenderer m_Renderer;
 
 
-        void Start()
+        void Awake()
         {
             m_Renderer = GetComponent<SpriteRenderer>();
         }
 
         void Reveal(int i)
         {
-            m_Renderer.enabled = (i >= constraintIndex);
+			Debug.Log ("Revealing: " + i);
+			if (i == constraintIndex) {
+				m_Renderer.enabled = true;
+			}
         }
+
+		void Hide(int i)
+		{
+			Debug.Log ("Hiding: " + i);
+			if (i == constraintIndex) {
+				m_Renderer.enabled = false;
+			}
+		}
 
         void Fail(int i)
         {
