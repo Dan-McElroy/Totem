@@ -25,7 +25,7 @@ public class StalagmiteDetector : MonoBehaviour {
                 if (stagObject == m_Stag2.gameObject)
                 {
                     triggerCount++;
-                    m_Stag1.Reset();
+                    BroadcastMessage("Reset");
                 }
                 break;
             case 2:

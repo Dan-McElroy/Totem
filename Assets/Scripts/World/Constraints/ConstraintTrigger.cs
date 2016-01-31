@@ -17,7 +17,6 @@ namespace Scripts.World.Constraints {
 		// Use this for initialization
 		void Start () {
 			currentNumberOfRepetitions = 0;
-			numberOfRepetitionsNeeded = numberOfRepetitionsNeeded * 2; //all events are duplicated
 //			Player = FindObjectOfType<PlatformerCharacter2D>();
 			circle = (GameObject) Instantiate(Resources.Load("WatchCircle"));
 			//make it a child of this object

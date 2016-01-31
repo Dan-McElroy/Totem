@@ -1,0 +1,41 @@
+
+CaveSeeker.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer15
+  rotate: true
+  xy: 281, 36
+  size: 84, 198
+  orig: 84, 198
+  offset: 0, 0
+  index: -1
+Layer16
+  rotate: true
+  xy: 2, 30
+  size: 69, 108
+  orig: 69, 108
+  offset: 0, 0
+  index: -1
+Layer17
+  rotate: false
+  xy: 2, 101
+  size: 147, 138
+  orig: 147, 138
+  offset: 0, 0
+  index: -1
+Layer18
+  rotate: false
+  xy: 151, 2
+  size: 128, 118
+  orig: 128, 118
+  offset: 0, 0
+  index: -1
+Set1(2)
+  rotate: true
+  xy: 151, 122
+  size: 117, 296
+  orig: 117, 296
+  offset: 0, 0
+  index: -1
