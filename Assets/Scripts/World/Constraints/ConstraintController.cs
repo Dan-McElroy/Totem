@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class ConstraintController : MonoBehaviour {
 
+    private static ConstraintController singleton;
+
 	//string is the constraint type?
 	private Dictionary<GameObject, bool> currentConstraintsMap;
 
@@ -12,7 +14,18 @@ public class ConstraintController : MonoBehaviour {
 	[SerializeField] int level = 0;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
+
+        if (singleton == null)
+        {
+            singleton = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
 		currentConstraintsMap = new Dictionary<GameObject, bool> ();
 		if (level > 0) {
 			Debug.Log ("level: " + level);

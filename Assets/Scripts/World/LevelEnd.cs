@@ -39,11 +39,10 @@ namespace Scripts.World
 
         void DoRestart()
         {
-            SceneManager.LoadScene(0);
-            RepositionPlayer();
             // Move the player back to the player start
             // Message the constraint manager to restart
             gameObject.SendMessageUpwards("Restart", SendMessageOptions.DontRequireReceiver);
+            SceneManager.LoadScene(0);
         }
     }
 }
