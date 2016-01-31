@@ -7,7 +7,6 @@ namespace Scripts.World
     [RequireComponent(typeof(Collider2D))]
     public class LevelEnd : MonoBehaviour
     {
-        private int m_LevelIndex = 0;
         private Transform m_PlayerTransform;
 
         [SerializeField] private Transform m_PlayerStart;
