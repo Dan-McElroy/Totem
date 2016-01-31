@@ -38,7 +38,6 @@ namespace Scripts.World.Constraints {
 
 		public void ConstraintFailed() {
 			if (!haveSucceeded) {
-				Debug.Log ("I have failed");
 				this.SendMessageUpwards ("ConstraintFailure", this.gameObject);
 			}
 		}

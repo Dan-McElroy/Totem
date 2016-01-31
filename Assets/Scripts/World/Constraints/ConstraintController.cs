@@ -69,9 +69,11 @@ public class ConstraintController : MonoBehaviour {
 	}
 
 	void Restart() {
-		Debug.Log ("level end in constraint controller");
-		if (NumberOfFailedConstraints() == 0) {
+		if (NumberOfFailedConstraints () == 0) {
 			IncrementLevel ();
+			Debug.Log ("we're in level: " + level);
+		} else {
+			Debug.Log ("failed the level");
 		}
 	}
 
