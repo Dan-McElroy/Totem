@@ -69,7 +69,8 @@ public class ConstraintController : MonoBehaviour {
 	}
 
 	void Restart() {
-		if (NumberOfFailedConstraints () == 0) {
+		BroadcastMessage ("Reset");
+		if (level == 0 || NumberOfFailedConstraints () == 0) {
 			IncrementLevel ();
 			Debug.Log ("we're in level: " + level);
 		} else {
@@ -89,6 +90,9 @@ public class ConstraintController : MonoBehaviour {
 
 	private void IncrementLevel() {
 		level = level + 1;
-		currentConstraintsMap.Add (globalConstraints[level], false);
+		currentConstraintsMap = new Dictionary<GameObject, bool> ();
+		for (var i=0; i < level; i++) {
+			currentConstraintsMap.Add (globalConstraints[i], false);
+		}
 	}
 }

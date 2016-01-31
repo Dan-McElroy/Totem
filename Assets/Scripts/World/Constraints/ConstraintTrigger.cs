@@ -41,5 +41,9 @@ namespace Scripts.World.Constraints {
 				this.SendMessageUpwards ("ConstraintFailure", this.gameObject);
 			}
 		}
+
+		void Reset() {
+			currentNumberOfRepetitions = 0;
+		}
 	}
 }

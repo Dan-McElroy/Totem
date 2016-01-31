@@ -6,26 +6,30 @@ namespace Scripts.World.Constraints {
 	[RequireComponent(typeof(Collider2D))]
 	public class MissedTriggerDetector : MonoBehaviour {
 
-		// Use this for initialization
-		void Start () {
-		
-		}
+		private bool enabled = true;
 		
 		void OnTriggerEnter2D (Collider2D otherCollider)
 		{
-			if (otherCollider.name == "Player")
+			if (otherCollider.name == "Player" && enabled)
 			{
 				this.SendMessageUpwards("StartConstraintOpportunity");
-				Debug.Log ("I am waiting");
 			}
 		}
 
 		void OnTriggerExit2D (Collider2D otherCollider)
 		{
-			if (otherCollider.name == "Player")
+			if (otherCollider.name == "Player" && enabled)
 			{
 				this.SendMessageUpwards("ConstraintFailed");
 			}
+		}
+
+		void Activate() {
+			enabled = true;
+		}
+
+		void DeActivate() {
+			enabled = false;
 		}
 	}
 }
