@@ -14,7 +14,6 @@ namespace Scripts.World
             {
                 // Inform the game of points collected
 				this.SendMessageUpwards ("ConstraintSuccess", this.gameObject);
-				Debug.Log ("Sent success");
 				m_enabled = false;
 				GetComponent<SpriteRenderer> ().enabled = false;
             }

@@ -3,9 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class ConstraintController : MonoBehaviour {
-
-    private static ConstraintController singleton;
-
+    
 	//string is the constraint type?
 	private Dictionary<GameObject, bool> currentConstraintsMap;
 
@@ -14,19 +12,8 @@ public class ConstraintController : MonoBehaviour {
 	[SerializeField] int level = 0;
 
 	// Use this for initialization
-	void Awake () {
-
-        if (singleton == null)
-        {
-            singleton = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-		currentConstraintsMap = new Dictionary<GameObject, bool> ();
+	void Start () {
+        currentConstraintsMap = new Dictionary<GameObject, bool> ();
 		Debug.Log ("level: " + level);
 		for (var i=0; i < globalConstraints.Count; i++) {
 			if (level > i) {
@@ -92,6 +79,7 @@ public class ConstraintController : MonoBehaviour {
 
 	private void IncrementLevel() {
 		level = level + 1;
+
 		currentConstraintsMap = new Dictionary<GameObject, bool> ();
 		for (var i=0; i < level; i++) {
 			currentConstraintsMap.Add (globalConstraints[i], false);

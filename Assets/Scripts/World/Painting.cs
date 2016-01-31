@@ -20,15 +20,14 @@ namespace Scripts.World
 
         void Reveal(int i)
         {
-			Debug.Log ("Revealing: " + i);
 			if (i == constraintIndex) {
 				m_Renderer.enabled = true;
-			}
+                m_Renderer.color = Color.white;
+            }
         }
 
 		void Hide(int i)
 		{
-			Debug.Log ("Hiding: " + i);
 			if (i == constraintIndex) {
 				m_Renderer.enabled = false;
 			}
