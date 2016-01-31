@@ -30,10 +30,15 @@ namespace Scripts.Player
         private float m_GravityStore;
         #endregion
 
+
+        public bool m_HasStartedWalking = false;
+        private float m_GroundedDuration = 0f;
+        [SerializeField] float m_JumpLeniency = 0.1f;
+
         #region Interaction variables
         public HashSet<Interactable> m_Interactables;
         #endregion
-
+        
         private void Awake()
         {
             // Setting up references.
@@ -76,6 +81,11 @@ namespace Scripts.Player
                     crouch = true;
                 }
             }
+            
+            if (move < -1e-3 || move > 1e-3)
+            {
+                m_HasStartedWalking = true;
+            }
 
             // Set whether or not the character is crouching in the animator
             m_Anim.SetBool("Crouch", crouch);
@@ -105,13 +115,29 @@ namespace Scripts.Player
                     Flip();
                 }
             }
-            // If the player should jump...
-            if (m_Grounded && jump && m_Anim.GetBool("Ground"))
+
+
+            if (m_Grounded)
             {
-                // Add a vertical force to the player.
-                m_Grounded = false;
-                m_Anim.SetBool("Ground", false);
-                m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+                if (jump)
+                {
+                    if (m_Anim.GetBool("Ground"))
+                    {
+                        m_Anim.SetBool("Ground", false);
+                    }
+                    // Add a vertical force to the player.
+                    m_Grounded = false;
+                    m_GroundedDuration = 0f;
+                    m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+                }
+                else if (m_HasStartedWalking)
+                {
+                    m_GroundedDuration += Time.fixedDeltaTime;
+                    if (m_GroundedDuration > m_JumpLeniency)
+                    {
+                        SendMessage("ConstraintFailure", gameObject, SendMessageOptions.DontRequireReceiver);
+                    }
+                }
             }
 
             // Sets gravity scale if on ladder.
