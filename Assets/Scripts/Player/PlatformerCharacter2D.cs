@@ -124,13 +124,15 @@ namespace Scripts.Player
 
             if (m_Grounded)
             {
+				if (gameObject.layer != 8) {
+					gameObject.layer = 8;       // Set to DoNotCollide
+				}
                 if (jump)
                 {
                     if (m_Anim.GetBool("Ground"))
                     {
                         m_Anim.SetBool("Ground", false);
                     }
-                    gameObject.layer = 8;       // Set to DoNotCollide
                     // Add a vertical force to the player.
                     m_Grounded = false;
                     m_GroundedDuration = 0f;
@@ -141,7 +143,6 @@ namespace Scripts.Player
                     m_GroundedDuration += Time.fixedDeltaTime;
                     if (m_GroundedDuration > m_JumpLeniency)
                     {
-						Debug.Log ("Ive been grounded too long: " + m_GroundedDuration);
                         SendMessage("ConstraintFailure", gameObject, SendMessageOptions.DontRequireReceiver);
                     }
                 }
