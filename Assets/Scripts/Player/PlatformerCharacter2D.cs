@@ -125,7 +125,6 @@ namespace Scripts.Player
                     {
                         m_Anim.SetBool("Ground", false);
                     }
-                    Debug.Log("Jump");
                     // Add a vertical force to the player.
                     m_Grounded = false;
                     m_GroundedDuration = 0f;
@@ -137,7 +136,6 @@ namespace Scripts.Player
                     if (m_GroundedDuration > m_JumpLeniency)
                     {
                         SendMessage("ConstraintFailure", gameObject, SendMessageOptions.DontRequireReceiver);
-                        Debug.Log("Not jumping");
                     }
                 }
             }
