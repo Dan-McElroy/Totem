@@ -10,7 +10,8 @@ GameObject:
   - 4: {fileID: 481044}
   - 61: {fileID: 6171014}
   - 114: {fileID: 11491666}
-  m_Layer: 0
+  - 114: {fileID: 11453344}
+  m_Layer: 9
   m_Name: Ladder
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -26,8 +27,25 @@ GameObject:
   m_Component:
   - 4: {fileID: 484296}
   - 212: {fileID: 21297976}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ropemid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &185794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 435490}
+  - 61: {fileID: 6114428}
+  - 114: {fileID: 11485344}
+  m_Layer: 9
+  m_Name: FailureWatch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +60,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 498870}
   - 212: {fileID: 21275306}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ropeend
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +76,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 428182}
   - 212: {fileID: 21261792}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ropetop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,6 +95,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481044}
   m_RootOrder: 0
+--- !u!4 &435490
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185794}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 481044}
+  m_RootOrder: 3
 --- !u!4 &481044
 Transform:
   m_ObjectHideFlags: 1
@@ -84,12 +114,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.97417986, y: -0.16, z: 0}
+  m_LocalPosition: {x: -13.38, y: -3.16, z: 0}
   m_LocalScale: {x: 0.8, y: 1, z: 1}
   m_Children:
   - {fileID: 428182}
   - {fileID: 484296}
   - {fileID: 498870}
+  - {fileID: 435490}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &484296
@@ -116,6 +147,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481044}
   m_RootOrder: 2
+--- !u!61 &6114428
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185794}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.9335327, y: 2.4821014}
+  serializedVersion: 2
+  m_Size: {x: 8.1388, y: 6.403512}
 --- !u!61 &6171014
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -130,6 +175,31 @@ BoxCollider2D:
   m_Offset: {x: 0.9, y: 2}
   serializedVersion: 2
   m_Size: {x: 1.2, y: 6}
+--- !u!114 &11453344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d270cc326b4ed4e75aa47dacdced5858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  watchRadius: {x: 2, y: 2, z: 0}
+  offset: {x: 0, y: 5, z: 0}
+  numberOfRepetitionsNeeded: 3
+--- !u!114 &11485344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b0599eb04629471db5f1a4bfb0a5d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11491666
 MonoBehaviour:
   m_ObjectHideFlags: 1

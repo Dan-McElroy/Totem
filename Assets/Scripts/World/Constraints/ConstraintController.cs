@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class ConstraintController : MonoBehaviour {
     
@@ -8,6 +9,8 @@ public class ConstraintController : MonoBehaviour {
 	private Dictionary<GameObject, bool> currentConstraintsMap;
 
 	[SerializeField] List<GameObject> globalConstraints;
+    [SerializeField] GameObject maw;
+    [SerializeField] GameObject endLevel;
 
 	[SerializeField] int level = 0;
 
@@ -80,10 +83,20 @@ public class ConstraintController : MonoBehaviour {
 	private void IncrementLevel() {
 		level = level + 1;
 
-		currentConstraintsMap = new Dictionary<GameObject, bool> ();
-		for (var i=0; i < level; i++) {
-			currentConstraintsMap.Add (globalConstraints[i], false);
-			BroadcastMessage ("Reveal", i);
-		}
+        if (globalConstraints.Count < level)
+        {
+            Destroy(maw);
+            Destroy(endLevel);
+            gameObject.GetComponent<AudioController>().enabled = false;
+        }
+        else
+        {
+            currentConstraintsMap = new Dictionary<GameObject, bool>();
+            for (var i = 0; i < level; i++)
+            {
+                currentConstraintsMap.Add(globalConstraints[i], false);
+                BroadcastMessage("Reveal", i);
+            }
+        }
 	}
 }

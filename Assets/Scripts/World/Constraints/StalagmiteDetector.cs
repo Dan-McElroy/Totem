@@ -32,11 +32,15 @@ public class StalagmiteDetector : MonoBehaviour {
                 if (stagObject == m_Stag1.gameObject)
                 {
                     SendMessageUpwards("ConstraintSuccess", gameObject);
-                    Debug.Log("Win");
                 }
                 break;
 
         }
+    }
+
+    public void Reset()
+    {
+        triggerCount = 0;
     }
 
     public void ConstraintFailure(GameObject stagObject)
