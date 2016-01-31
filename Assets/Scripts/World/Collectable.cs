@@ -6,7 +6,7 @@ namespace Scripts.World
     [RequireComponent(typeof(Collider2D))]
     public class Collectable : MonoBehaviour
     {
-        public float m_Value = 10f;
+        
 
         // Use this for initialization
         void Start()
