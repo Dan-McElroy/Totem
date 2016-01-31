@@ -21,8 +21,8 @@ public class AudioController : MonoBehaviour {
         m_StartVolume = m_AudioSource.volume;
         m_StartPitch = m_AudioSource.pitch;
 	}
-	
-	void Restart()
+
+    void NotifyNumberConstraints(int number)
     {
         m_AudioSource.pitch = m_StartPitch + (m_ConstraintController.NumberOfActiveConstraints() * m_ActiveConstraintPitchDelta);
     }
