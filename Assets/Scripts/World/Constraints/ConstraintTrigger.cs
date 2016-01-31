@@ -2,8 +2,7 @@
 using Scripts.Player;
 
 namespace Scripts.World.Constraints {
-
-	[RequireComponent(typeof(Collider2D))]
+    
 	public class ConstraintTrigger : MonoBehaviour {
 
 //		private PlatformerCharacter2D Player;
@@ -42,7 +41,7 @@ namespace Scripts.World.Constraints {
 			}
 		}
 
-		void Reset() {
+		public void Reset() {
 			currentNumberOfRepetitions = 0;
 		}
 	}
