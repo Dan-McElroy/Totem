@@ -16,7 +16,6 @@ namespace Scripts.World.Constraints {
 			if (otherCollider.name == "Player")
 			{
 				this.SendMessageUpwards("ActivityDetected");
-				Debug.Log ("I was triggered");
 			}
 		}
 
