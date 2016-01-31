@@ -59,7 +59,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 165640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.36, z: 0}
+  m_LocalPosition: {x: 0.35, y: 0.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 491568}
@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.6034732, z: 0}
+  m_LocalPosition: {x: 0, y: -0.92, z: 0}
   m_LocalScale: {x: 0.56448287, y: 0.5644837, z: 1}
   m_Children: []
   m_Father: {fileID: 491568}
@@ -83,8 +83,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.9275322, y: -1.5436575, z: 0}
-  m_LocalScale: {x: 1.7715329, y: 1.7715304, z: 1}
+  m_LocalPosition: {x: -27.508886, y: -1.6650864, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 476046}
   - {fileID: 432078}
@@ -118,9 +118,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.45}
+  m_Offset: {x: 0.2, y: -0.7}
   serializedVersion: 2
-  m_Radius: 0.16
+  m_Radius: 0.2
 --- !u!61 &6190662
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -132,9 +132,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.2, y: 0.2}
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.68}
+  m_Size: {x: 0.25, y: 1.5}
 --- !u!95 &9541188
 Animator:
   serializedVersion: 3
@@ -144,7 +144,7 @@ Animator:
   m_GameObject: {fileID: 197726}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5fc43f0c4b413534ba12c51c0e5e5f6f, type: 2}
+  m_Controller: {fileID: 9100000, guid: f8179f5c51a07419a9104196e8eb7dec, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 1
   m_ApplyRootMotion: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxSpeed: 10
-  m_JumpForce: 600
+  m_JumpForce: 800
   m_CrouchSpeed: 0.25
   m_AirControl: 1
   m_WhatIsGround:
@@ -183,6 +183,8 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_OnLadder: 0
   m_ClimbSpeed: 5
+  m_HasStartedWalking: 0
+  m_JumpLeniency: 1.5
 --- !u!212 &21237646
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -208,10 +210,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1783731295
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 8fb98a6035269e64a998f9b56828fc4f, type: 3}
+  m_SortingOrder: 20
+  m_Sprite: {fileID: 21300046, guid: 865ea30cb89d4b740b899ea172672434, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
 --- !u!1001 &100100000
 Prefab:
