@@ -135,6 +135,7 @@ namespace Scripts.Player
                     m_GroundedDuration += Time.fixedDeltaTime;
                     if (m_GroundedDuration > m_JumpLeniency)
                     {
+						Debug.Log ("Ive been grounded too long: " + m_GroundedDuration);
                         SendMessage("ConstraintFailure", gameObject, SendMessageOptions.DontRequireReceiver);
                     }
                 }
@@ -176,5 +177,9 @@ namespace Scripts.Player
             theScale.x *= -1;
             transform.localScale = theScale;
         }
+
+		void Reset() {
+			m_GroundedDuration = 0f;
+		}
     }
 }
